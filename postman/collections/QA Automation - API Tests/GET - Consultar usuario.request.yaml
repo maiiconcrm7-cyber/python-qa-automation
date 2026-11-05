@@ -1,0 +1,79 @@
+$kind: http-request
+description: ""
+url: https://jsonplaceholder.typicode.com/users/1
+method: GET
+scripts:
+  - type: afterResponse
+    code: "\r
+
+      pm.test(\"Status da API deve ser 200\", function () {\r
+
+      \    pm.response.to.have.status(200);\r
+
+      });\r
+
+      \r
+
+      pm.test(\"Nome do usuario correto\", function () {\r
+
+      \    const dados = pm.response.json();\r
+
+      \r
+
+      \    pm.expect(dados.name).to.eql(\"Leanne Graham\");\r
+
+      });\r
+
+      \r
+
+      pm.test(\"Email do usuario correto\", function () {\r
+
+      \    const dados = pm.response.json();\r
+
+      \r
+
+      \    pm.expect(dados.email).to.eql(\"Sincere@april.biz\");\r
+
+      });\r
+
+      \r
+
+      pm.test(\"Tempo de resposta menor que 1000ms\", function () {\r
+
+      \    pm.expect(pm.response.responseTime).to.be.below(1000);\r
+
+      });\r
+
+      \r
+
+      pm.test(\"Usuario possui campos obrigatorios\", function () {\r
+
+      \    const dados = pm.response.json();\r
+
+      \r
+
+      \    pm.expect(dados).to.have.property(\"id\");\r
+
+      \    pm.expect(dados).to.have.property(\"name\");\r
+
+      \    pm.expect(dados).to.have.property(\"email\");\r
+
+      });\r
+
+      \r
+
+      pm.test(\"Tipos de dados corretos\", function () {\r
+
+      \    const dados = pm.response.json();\r
+
+      \r
+
+      \    pm.expect(dados.id).to.be.a(\"number\");\r
+
+      \    pm.expect(dados.name).to.be.a(\"string\");\r
+
+      \    pm.expect(dados.email).to.be.a(\"string\");\r
+
+      });\r\n"
+    language: text/javascript
+order: 3000

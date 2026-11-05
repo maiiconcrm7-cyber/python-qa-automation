@@ -1,0 +1,61 @@
+$kind: http-request
+url: https://jsonplaceholder.typicode.com/users
+method: POST
+body:
+  type: json
+  content: "{\r
+
+    \  \"name\": \"Carlos Silva\",\r
+
+    \  \"email\": \"carlos@teste.com\",\r
+
+    \  \"username\": \"carlos.silva\"\r
+
+    }"
+scripts:
+  - type: afterResponse
+    code: "pm.test(\"Usuario criado com status 201\", function () {\r
+
+      \    pm.response.to.have.status(201);\r
+
+      });\r
+
+      \r
+
+      pm.test(\"Nome do usuario correto\", function () {\r
+
+      \    const dados = pm.response.json();\r
+
+      \    pm.expect(dados.name).to.eql(\"Carlos Silva\");\r
+
+      });\r
+
+      \r
+
+      pm.test(\"Usuario recebeu um ID\", function () {\r
+
+      \    const dados = pm.response.json();\r
+
+      \    pm.expect(dados).to.have.property(\"id\");\r
+
+      });\r
+
+      pm.test(\"Email do usuario correto\", function () {\r
+
+      \    const dados = pm.response.json();\r
+
+      \    pm.expect(dados.email).to.eql(\"carlos@teste.com\");\r
+
+      });\r
+
+      \r
+
+      pm.test(\"Username do usuario correto\", function () {\r
+
+      \    const dados = pm.response.json();\r
+
+      \    pm.expect(dados.username).to.eql(\"carlos.silva\");\r
+
+      });"
+    language: text/javascript
+order: 5000
