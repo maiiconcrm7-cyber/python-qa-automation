@@ -1,0 +1,7 @@
+nome,idade,resultado_esperado
+Carlos,25,Sucesso
+Ana,18,Sucesso
+Pedro,17,Erro
+Maria,16,Erro
+Joao,30,Sucesso
+Lucas,15,Erro
