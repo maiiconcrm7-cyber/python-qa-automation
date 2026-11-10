@@ -1,5 +1,7 @@
 # Python QA Automation | API Testing Portfolio
 
+[![Python QA Automated Tests](https://github.com/maiiconcrm7-cyber/python-qa-automation/actions/workflows/python-app.yml/badge.svg)](https://github.com/maiiconcrm7-cyber/python-qa-automation/actions/workflows/python-app.yml)
+
 A practical Quality Assurance portfolio featuring automated testing with **Python, Pytest, and Postman**.
 
 This project demonstrates API validation, test automation, positive and negative scenarios, and software testing fundamentals.
